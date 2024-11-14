@@ -6,8 +6,8 @@ read -p "Introduce el hostname: " HOSTNAME
 # Comprobar sí el usuario es root
 
 if [ "$(id -u)" -ne 0 ]; then
-	echo "Este scripts debe ejecutarse como root." >&2
-	exit 1
+        echo "Este scripts debe ejecutarse como root." >&2
+        exit 1
 fi
 
 # Actualizar repositorios y paquetes
@@ -71,9 +71,9 @@ apt install -y mailutils
 
 read -p "Introduce la dirección de correo a la que quieres enviar el mensaje: " EMAIL
 read -p "Introduce el asunto del mensaje: " ASUNTO
-
+read -p "Introduce el contenido del mensaje: " MENSAJE
 # Enviar el correo electrónico
 
-echo "Correo electrónico de prueba" | mail -s "$ASUNTO" "$EMAIL"
+echo $MENSAJE | mail -s "$ASUNTO" "$EMAIL"
 
 echo "Se ha enviado un mensaje de confirmación a $EMAIL."
